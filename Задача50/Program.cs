@@ -1,8 +1,7 @@
 ﻿// Задача 50. Напишите программу, которая на вход принимает позиции элемента в двумерном массиве,
 // и возвращает значение этого элемента или же указание, что такого элемента нет.
 
-int m = 5;
-int n = 6;
+
 int[,] getArray(int mLocal, int nLocal)
 {
     int[,] result = new int[mLocal, nLocal];
@@ -30,27 +29,28 @@ void printArray(int[,] arr)
 
 void findArrayElement(int[,] array1)
 {
-    Console.WriteLine("Введите индекс строки:");
+    Console.WriteLine("Введите номер строки:");
     int x = Convert.ToInt32(Console.ReadLine());
-    Console.WriteLine("Введите индекс столбца:");
+    Console.WriteLine("Введите номер столбца:");
     int y = Convert.ToInt32(Console.ReadLine());
 
-    for (int i = 0; i < m; i++)
+    for (int i = 0; i < array1.GetLength(0); i++)
     {
-        for (int j = 0; j < n; j++)
+        for (int j = 0; j < array1.GetLength(1); j++)
         {
-            if (i == x && j == y)
+            if (i == x-1 && j == y-1)
             {
                 Console.WriteLine($"Элемент с такими индексами равен {array1[i, j]} ");
             }
         }
     }
-    if (x >= m || y >= n)
+    if (x >array1.GetLength(0) || y > array1.GetLength(1))
     {
         Console.Write("Элемента с такими индексами в массиве нет");
     }
 }
-
+int m = 5;
+int n = 6;
 int[,] array = getArray(m, n);
 printArray(array);
 findArrayElement(array);
